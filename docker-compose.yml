@@ -1,10 +1,16 @@
 version: '3.8'
 
 services:
-  api:
-    image: dockerized-dotnetapi-25
+  dotnet-api:
+    image: dockerized-dotnetapi
+    container_name: mydockerapi-container
     build: .
     ports:
       - "2501:80"
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
+    volumes:
+      - app_data:/app/logs
+
+volumes:
+  app_data:

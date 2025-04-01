@@ -42,6 +42,11 @@ docker run -d -p 2501:80 -e ASPNETCORE_ENVIRONMENT=Development --name mydockerap
 To verify the environment mode, open:  
 - [http://localhost:2501/env](http://localhost:2501/env)
 
+## Logging Configuration
+The application logs startup events into a file inside the container:
+- Logs are stored in `/app/logs/log.txt`.
+- If the directory does not exist, it is created automatically.
+
 ## Project Structure
 ```
 Dockerized-DotNetAPI/
@@ -49,10 +54,12 @@ Dockerized-DotNetAPI/
 │-- docker-compose.yml
 │-- Dockerized-DotNetAPI.csproj
 │-- Program.cs
+│-- logs/ (generated at runtime)
 ```
 
 ## Notes
 - This project demonstrates a **basic** .NET API inside a Docker container.
 - Supports both **Docker CLI** and **Docker Compose** for running the application.
 - Ensure Docker is installed and running before executing the commands.
+- Includes basic logging to track application startup.
 
