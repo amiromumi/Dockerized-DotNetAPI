@@ -15,4 +15,5 @@ RUN dotnet publish "./Dockerized-DotNetAPI.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=build /app/publish .
+ENV ASPNETCORE_ENVIRONMENT=Production
 ENTRYPOINT ["dotnet", "Dockerized-DotNetAPI.dll"]

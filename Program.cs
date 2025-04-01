@@ -41,6 +41,9 @@ app.MapGet("/weatherforecast", () =>
 
 app.Urls.Add("http://0.0.0.0:80");
 
+var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Unknown";
+app.MapGet("/env", () => $"Running in {environment} mode");
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
